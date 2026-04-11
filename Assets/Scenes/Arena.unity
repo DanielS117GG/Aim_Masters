@@ -3153,6 +3153,7 @@ MonoBehaviour:
   firePoint: {fileID: 1589731336}
   fireRate: 2
   bulletSpeed: 40
+  weaponRecoil: {fileID: 0}
 --- !u!1 &2040449573
 GameObject:
   m_ObjectHideFlags: 0

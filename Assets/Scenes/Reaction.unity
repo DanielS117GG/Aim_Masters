@@ -878,6 +878,16 @@ MonoBehaviour:
   closeRowDestroyed: 0
   midRowDestroyed: 0
   farRowDestroyed: 0
+  arenaSurvivalTime: 0
+  arenaVisibleTargets: 0
+  arenaExpiredLives: 0
+  arenaMaxExpiredLives: 10
+  arenaMovingKilled: 0
+  arenaDiskKilled: 0
+  arenaSniperKilled: 0
+  arenaMovingExpired: 0
+  arenaDiskExpired: 0
+  arenaSniperExpired: 0
 --- !u!4 &709453956
 Transform:
   m_ObjectHideFlags: 0
@@ -2098,6 +2108,7 @@ MonoBehaviour:
   firePoint: {fileID: 1589731336}
   fireRate: 2
   bulletSpeed: 40
+  weaponRecoil: {fileID: 0}
 --- !u!1 &2040449573
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,7 +2352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bd5e30663e4c6846bedd0897fe1994b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ReactionSpawner
-  prefab: {fileID: 936409233139018396, guid: e4708d51aa87d5746aeb0c683df74183, type: 3}
+  prefab: {fileID: 4667432145739459934, guid: 626ed3e77afb4ef4c938e65418419abf, type: 3}
   minSpawnInterval: 3
   maxSpawnInterval: 5
   fastPhaseStartTime: 20
@@ -2357,7 +2368,7 @@ Transform:
   m_GameObject: {fileID: 2100647399}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.71, y: -0.12, z: 0.03}
+  m_LocalPosition: {x: -6.71, y: -1.39, z: 0.03}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
