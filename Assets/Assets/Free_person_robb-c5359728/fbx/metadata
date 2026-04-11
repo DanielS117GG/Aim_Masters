@@ -1,0 +1,172 @@
+{
+	"assetNamespace": "fab",
+	"listing":
+	{
+		"averageRating": 4.5,
+		"createdAt": "",
+		"description": "<p>a masked bandit. or just a random guy..</p><p></p><p>rigged in mixamo</p>",
+		"isAiForbidden": false,
+		"isAiGenerated": false,
+		"lastUpdatedAt": "",
+		"listingType": "3d-model",
+		"media": "https://media.fab.com/image_previews/gallery_images/bcf02135-494b-41f7-b00c-79da04b4b463/e076b575-d631-4b02-a353-095b4ab37e9f.jpg",
+		"publishedAt": "2025-09-17T05:05:04.123760Z",
+		"reviewCount": 2,
+		"thumbnail": "https://media.fab.com/image_previews/gallery_images/a8b437c1-bd9c-4006-9a18-4481a270d320/e8e434c9-af0e-48a7-ae82-448d001389ba.jpg",
+		"title": "Free person robb",
+		"uid": "c5359728-85aa-4b27-95e6-4352d637a71a",
+		"updatedAt": "",
+		"user":
+		{
+			"coverImageUrl": "https://cdn1.epicgames.com/fab/seller/o-266sefdpypwqrt76fgztnzxdwjayeg/cover/97cec211.jpg",
+			"profileImageUrl": "https://cdn1.epicgames.com/fab/seller/o-266sefdpypwqrt76fgztnzxdwjayeg/profile/b273411c.jpg",
+			"sellerName": "Eemanuel3Dl",
+			"uid": "0966da1a-9b93-48ec-be00-bb20ed782c2a"
+		},
+		"tags": [
+			{
+				"name": "Retro",
+				"slug": "retro",
+				"uid": "01b64ec5-7261-4c99-a280-a34680f1af03"
+			},
+			{
+				"name": "Pbr",
+				"slug": "pbr",
+				"uid": "080edd3b-d10a-4f32-ace2-30f5baa480dc"
+			},
+			{
+				"name": "Postapocalyptic",
+				"slug": "postapocalyptic",
+				"uid": "0f89b929-9f95-43cf-8255-d9f5cf2139ad"
+			},
+			{
+				"name": "Lowpoly",
+				"slug": "lowpoly",
+				"uid": "451806dc-649e-43b7-9c2e-a54485de14b6"
+			},
+			{
+				"name": "Modern",
+				"slug": "modern",
+				"uid": "4a008392-1a66-40e5-8ba9-ffb361b25ef5"
+			},
+			{
+				"name": "Scifi",
+				"slug": "scifi",
+				"uid": "50945d2d-b4f5-4e56-bda9-b81d5722599e"
+			},
+			{
+				"name": "Plastic",
+				"slug": "plastic",
+				"uid": "51c4ad44-f74d-4552-bcd5-1e3b631f4107"
+			},
+			{
+				"name": "Metal",
+				"slug": "metal",
+				"uid": "55165238-19a2-4184-85f1-e8650bd2a38d"
+			},
+			{
+				"name": "Cloth",
+				"slug": "cloth",
+				"uid": "66a612e2-eef0-4dd3-9cee-06aa4b02b4d8"
+			},
+			{
+				"name": "Transparent",
+				"slug": "transparent",
+				"uid": "7348b202-9808-4521-aea6-86d19c54ba2d"
+			},
+			{
+				"name": "Steampunk",
+				"slug": "steampunk",
+				"uid": "74887967-08b9-4e7b-b032-1727c7bec0c8"
+			},
+			{
+				"name": "Glass",
+				"slug": "glass",
+				"uid": "7735e020-15bd-4279-9114-f55d6f5b4396"
+			},
+			{
+				"name": "Realistic",
+				"slug": "realistic",
+				"uid": "93b0d3f1-a96c-4d68-9d44-69a313519e32"
+			},
+			{
+				"name": "Reflective",
+				"slug": "reflective",
+				"uid": "97467ca5-b0a1-458f-8983-706590f8375e"
+			},
+			{
+				"name": "Stylized",
+				"slug": "stylized",
+				"uid": "b584e222-c5bf-43b3-b9ed-f937eaf169c1"
+			},
+			{
+				"name": "Fabric",
+				"slug": "fabric",
+				"uid": "c229f2a8-54b7-46a1-b790-56836f8ee9c7"
+			},
+			{
+				"name": "Rigged",
+				"slug": "rigged",
+				"uid": "c5c1f70c-aabe-41d4-bd3a-e7e00ab60f0c"
+			},
+			{
+				"name": "Metallic",
+				"slug": "metallic",
+				"uid": "d5b82134-c49f-443e-8b37-7847c2bd3605"
+			}
+		],
+		"category":
+		{
+			"name": "Personajes y criaturas",
+			"path": "characters-creatures",
+			"slug": "characters-creatures",
+			"uid": "358f4f32-1ca9-42ec-9be6-24303e41b412"
+		},
+		"assetFormats": [
+			{
+				"assetFormatType":
+				{
+					"name": "FBX",
+					"groupName": "Formatos de intercambio 3D",
+					"code": "fbx",
+					"icon": "cube",
+					"extensions": [
+						"fbx"
+					]
+				}
+			},
+			{
+				"assetFormatType":
+				{
+					"name": "Archivos convertidos",
+					"groupName": "",
+					"code": "converted-files",
+					"icon": "cube",
+					"extensions": [
+						"gltf",
+						"glb",
+						"usdz"
+					]
+				}
+			}
+		],
+		"_PluginMetas":
+		{
+			"apiDataVersion": "0.0.1",
+			"entitlementUid": "4ea2d2c2-54fc-4de9-8cf2-52be0e109b48",
+			"cacheSize": 0,
+			"downloaded": []
+		}
+	},
+	"target": "",
+	"quality": "",
+	"format": "fbx",
+	"fileId": "e21e0a58-7417-4556-aed2-902153d4c88f",
+	"platformIncluded": "",
+	"distributionPointBaseUrls": [],
+	"distributionMethod": "",
+	"entitlementUid": "4ea2d2c2-54fc-4de9-8cf2-52be0e109b48",
+	"invertedNormal": false,
+	"isConverted": false,
+	"isQuixel": false
+}
