@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -5,17 +6,34 @@ public class Bullet : MonoBehaviour
     public float lifeTime = 3f;
     private Rigidbody rb;
     private bool alreadyResolved = false;
+    private Coroutine deactivateCoroutine;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        Destroy(gameObject, lifeTime);
+
     }
 
+    void OnEnable()
+    {
+        alreadyResolved = false;
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        deactivateCoroutine = StartCoroutine(DeactivateAfterTime());
+    }
     public void SetDirection(Vector3 dir, float speed)
     {
         rb.linearVelocity = dir * speed;
     }
+
+    IEnumerator DeactivateAfterTime()
+    {
+        yield return new WaitForSeconds(lifeTime);
+        if (alreadyResolved && PracticeSessionManager.Instance != null)
+        { PracticeSessionManager.Instance.AddShotMiss(); }
+        Deactivate();
+    }
+
 
     void OnCollisionEnter(Collision collision)
     {
@@ -29,26 +47,27 @@ public class Bullet : MonoBehaviour
         if (target == null)
             target = collision.collider.GetComponentInChildren<TargetBase>();
 
+        alreadyResolved = true;
+
         if (target != null)
         {
-            alreadyResolved = true;
-            target.OnHit(collision.contacts[0].point);
-            Destroy(gameObject);
-            return;
-        }
 
-        alreadyResolved = true;
-        PracticeSessionManager.Instance.AddShotMiss();
-        Destroy(gameObject);
+            target.OnHit(collision.contacts[0].point);
+
+        }
+        else
+        {
+
+
+            PracticeSessionManager.Instance.AddShotMiss();
+
+        }
+        Deactivate();
     }
 
-    void OnDestroy()
+    void Deactivate()
     {
-        if (!alreadyResolved &&
-            PracticeSessionManager.Instance != null &&
-            PracticeSessionManager.Instance.sessionActive)
-        {
-            PracticeSessionManager.Instance.AddShotMiss();
-        }
+        if (deactivateCoroutine != null) StopCoroutine(deactivateCoroutine);
+        gameObject.SetActive(false);
     }
 }

@@ -39,10 +39,17 @@ public class SimpleGun : MonoBehaviour
 
         Vector3 dir = (targetPoint - firePoint.position).normalized;
 
-        GameObject bulletObj = Instantiate(bulletPrefab, firePoint.position, Quaternion.LookRotation(dir));
+        GameObject bulletObj = BulletPool.instance.GetBullet();
+        bulletObj.transform.position = firePoint.position;
+        bulletObj.transform.rotation = Quaternion.LookRotation(dir);
+
+    
+        bulletObj.SetActive(true);
+
         Bullet bullet = bulletObj.GetComponent<Bullet>();
 
         if (bullet != null)
             bullet.SetDirection(dir, bulletSpeed);
     }
 }
+
