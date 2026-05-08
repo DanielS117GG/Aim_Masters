@@ -3,22 +3,12 @@ using System.Collections.Generic;
 
 public class ArenaSpawner : MonoBehaviour
 {
-    [Header("Prefabs")]
-    public ArenaMovingEnemy movingPrefab;
-    public ArenaDiskEnemy diskPrefab;
+    [Header("Dependencies")]
+    public EnemyFactory enemyFactory;
 
     [Header("Arena Bounds")]
     public Vector3 arenaCenter = Vector3.zero;
     public Vector3 arenaSize = new Vector3(40f, 6f, 40f);
-
-    [Header("Moving Enemy Variants")]
-    public Vector2 movingSpeedRange = new Vector2(2f, 6f);
-    public Vector3[] movingScales = new Vector3[]
-    {
-        Vector3.one,
-        new Vector3(0.75f, 0.75f, 0.75f),
-        new Vector3(0.5f, 0.5f, 0.5f)
-    };
 
     [Header("Spawn Limits")]
     public int maxMovingAlive = 3;
@@ -32,6 +22,12 @@ public class ArenaSpawner : MonoBehaviour
 
     float nextMovingSpawn;
     float nextDiskSpawn;
+    IArenaEnemyFactory cachedFactory;
+
+    void Awake()
+    {
+        cachedFactory = enemyFactory;
+    }
 
     void Start()
     {
@@ -41,12 +37,15 @@ public class ArenaSpawner : MonoBehaviour
 
     void Update()
     {
-        var m = PracticeSessionManager.Instance;
-        if (m == null || !m.sessionActive) return;
-        if (m.currentMode != PracticeMode.Arena) return;
+        PracticeSessionManager manager = PracticeSessionManager.Instance;
+        if (manager == null || !manager.sessionActive) return;
+        if (manager.currentMode != PracticeMode.Arena) return;
 
-        activeEnemies.RemoveAll(e => e == null || !e.gameObject.activeInHierarchy);
-        m.SetArenaVisibleTargets(CountVisibleArenaTargets());
+        if (cachedFactory == null)
+            cachedFactory = enemyFactory;
+
+        activeEnemies.RemoveAll(enemy => enemy == null || !enemy.gameObject.activeInHierarchy);
+        manager.SetArenaVisibleTargets(CountVisibleArenaTargets());
 
         if (Time.time >= nextMovingSpawn && CountAlive(ArenaEnemyType.Moving) < maxMovingAlive)
         {
@@ -64,11 +63,13 @@ public class ArenaSpawner : MonoBehaviour
     int CountAlive(ArenaEnemyType type)
     {
         int count = 0;
-        foreach (var e in activeEnemies)
+
+        foreach (ArenaEnemyBase enemy in activeEnemies)
         {
-            if (e != null && e.gameObject.activeInHierarchy && e.enemyType == type)
+            if (enemy != null && enemy.gameObject.activeInHierarchy && enemy.enemyType == type)
                 count++;
         }
+
         return count;
     }
 
@@ -76,16 +77,16 @@ public class ArenaSpawner : MonoBehaviour
     {
         int count = 0;
 
-        foreach (var e in activeEnemies)
+        foreach (ArenaEnemyBase enemy in activeEnemies)
         {
-            if (e != null && e.gameObject.activeInHierarchy)
+            if (enemy != null && enemy.gameObject.activeInHierarchy)
                 count++;
         }
 
         ArenaSniperEnemy[] snipers = FindObjectsOfType<ArenaSniperEnemy>();
-        foreach (var s in snipers)
+        foreach (ArenaSniperEnemy sniper in snipers)
         {
-            if (s != null && s.gameObject.activeInHierarchy)
+            if (sniper != null && sniper.gameObject.activeInHierarchy)
                 count++;
         }
 
@@ -94,26 +95,29 @@ public class ArenaSpawner : MonoBehaviour
 
     void SpawnMovingEnemy()
     {
-        if (movingPrefab == null) return;
+        if (cachedFactory == null) return;
 
-        Vector3 pos = GetRandomArenaPosition();
-        ArenaMovingEnemy enemy = Instantiate(movingPrefab, pos, Quaternion.identity);
-        enemy.Init(this);
-        enemy.moveSpeed = Random.Range(movingSpeedRange.x, movingSpeedRange.y);
-        enemy.transform.localScale = movingScales[Random.Range(0, movingScales.Length)];
-        enemy.arenaMinBounds = arenaCenter - arenaSize * 0.5f;
-        enemy.arenaMaxBounds = arenaCenter + arenaSize * 0.5f;
-        activeEnemies.Add(enemy);
+        Vector3 position = GetRandomArenaPosition();
+        ArenaMovingEnemy enemy = cachedFactory.CreateMovingEnemy(
+            position,
+            this,
+            GetArenaMinBounds(),
+            GetArenaMaxBounds()
+        );
+
+        if (enemy != null)
+            activeEnemies.Add(enemy);
     }
 
     void SpawnDiskEnemy()
     {
-        if (diskPrefab == null) return;
+        if (cachedFactory == null) return;
 
-        Vector3 pos = GetRandomArenaPosition();
-        ArenaDiskEnemy enemy = Instantiate(diskPrefab, pos, Quaternion.identity);
-        enemy.Init(this);
-        activeEnemies.Add(enemy);
+        Vector3 position = GetRandomArenaPosition();
+        ArenaDiskEnemy enemy = cachedFactory.CreateDiskEnemy(position, this);
+
+        if (enemy != null)
+            activeEnemies.Add(enemy);
     }
 
     Vector3 GetRandomArenaPosition()
@@ -123,6 +127,16 @@ public class ArenaSpawner : MonoBehaviour
             Random.Range(0.5f, arenaSize.y),
             Random.Range(-arenaSize.z * 0.5f, arenaSize.z * 0.5f)
         );
+    }
+
+    public Vector3 GetArenaMinBounds()
+    {
+        return arenaCenter - arenaSize * 0.5f;
+    }
+
+    public Vector3 GetArenaMaxBounds()
+    {
+        return arenaCenter + arenaSize * 0.5f;
     }
 
     public void OnEnemyRemoved(ArenaEnemyBase enemy)
