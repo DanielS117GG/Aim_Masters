@@ -1301,10 +1301,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   cameraHolder: {fileID: 458842320}
-  moveSpeed: 2.8
+  moveSpeed: 6
   gravity: -20
-  mouseSensitivity: 600
-  maxLookX: 180
+  mouseSensitivity: 150
+  maxLookX: 80
 --- !u!1001 &486407633
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3712,52 +3712,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1744054330}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1749717166
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1749717168}
-  - component: {fileID: 1749717167}
-  m_Layer: 0
-  m_Name: BulletPool
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1749717167
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1749717166}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e376cd6f26b91b0468cd15cf4fea657e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::BulletPool
-  bulletPrefab: {fileID: 2640676331112836470, guid: 5e8462df423d9ec449362c9020b5afa1, type: 3}
-  poolSize: 20
---- !u!4 &1749717168
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1749717166}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.29376, y: 0.29784, z: 1.08216}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1856318387
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4027,6 +3981,52 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910400329}
   m_CullTransparentMesh: 1
+--- !u!1 &1913799059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1913799061}
+  - component: {fileID: 1913799060}
+  m_Layer: 0
+  m_Name: BulletPoll
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1913799060
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913799059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e376cd6f26b91b0468cd15cf4fea657e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BulletPool
+  bulletPrefab: {fileID: 2640676331112836470, guid: 5e8462df423d9ec449362c9020b5afa1, type: 3}
+  poolSize: 20
+--- !u!4 &1913799061
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1913799059}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.55683, y: 0, z: 0.67139}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1969902573
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4500,6 +4500,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: WeaponPoint
       objectReference: {fileID: 0}
+    - target: {fileID: 4029507016810506211, guid: 4bee0352dfa1fcc42addc6ccc77cb07d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.741
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029507016810506211, guid: 4bee0352dfa1fcc42addc6ccc77cb07d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.317
+      objectReference: {fileID: 0}
+    - target: {fileID: 4029507016810506211, guid: 4bee0352dfa1fcc42addc6ccc77cb07d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.294
+      objectReference: {fileID: 0}
     - target: {fileID: 5828505863735470698, guid: 4bee0352dfa1fcc42addc6ccc77cb07d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.18631
@@ -4572,4 +4584,4 @@ SceneRoots:
   - {fileID: 44092928}
   - {fileID: 316839245}
   - {fileID: 110631642}
-  - {fileID: 1749717168}
+  - {fileID: 1913799061}
