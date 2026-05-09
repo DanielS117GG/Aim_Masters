@@ -1301,10 +1301,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
   cameraHolder: {fileID: 458842320}
-  moveSpeed: 6
+  moveSpeed: 2.8
   gravity: -20
-  mouseSensitivity: 150
-  maxLookX: 80
+  mouseSensitivity: 600
+  maxLookX: 180
 --- !u!1001 &486407633
 PrefabInstance:
   m_ObjectHideFlags: 0
